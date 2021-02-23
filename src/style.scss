@@ -5,17 +5,40 @@
 @import "./node_modules/@alaskaairux/design-tokens/dist/tokens/SCSSVariables";
 @import "./node_modules/@alaskaairux/design-tokens/dist/tokens/SassCustomProperties";
 
-.icon {
+.reference {
+  width: 0;
+  height: 0;
+}
+
+.trigger {
   height: 32px;
-  width: 32px;
+  width: 100%px;
   position: fixed;
   bottom: -32px;
   right: 32px;
   border: none;
-  border-radius: 50%;
+  border-radius: 16px;
+  white-space: nowrap;
   transition: bottom 300ms ease-in-out;
-}
 
-.icon.visible {
-  bottom: 32px;
+  &--inline {
+    position: static;
+    background-color: transparent;
+  }
+
+  &--visible {
+    bottom: 32px;
+  }
+  
+  &:not(.trigger--inline) .message {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 300ms ease-in-out 50ms;
+  }
+
+  &:not(.trigger--inline):hover .message {
+    max-width: 32ch;
+  }
 }

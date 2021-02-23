@@ -19,8 +19,11 @@ class AuroBacktotop extends LitElement {
   constructor() {
     super();
     this.intersectionRatios = [];
+    this.inline = false;
     this.visible = false;
     const dom = new DOMParser().parseFromString(arrowUp.svg, 'text/html');
+
+    dom.body.firstChild.querySelector('title').textContent = 'Go to page top';
 
     this.svg = dom.body.firstChild;
   }
@@ -30,6 +33,7 @@ class AuroBacktotop extends LitElement {
       intersectionRatios: { type: Array },
       observer: { attribute: false },
       visible: { type: Boolean },
+      inline: { type: Boolean },
       svg: { type: Node },
     };
   }
@@ -45,7 +49,7 @@ class AuroBacktotop extends LitElement {
   }
 
   firstUpdated() {
-    if (!IntersectionObserver) {
+    if (!IntersectionObserver || this.inline) {
       this.visible = true;
 
       return;
@@ -66,10 +70,17 @@ class AuroBacktotop extends LitElement {
   }
 
   render() {
+
+    const classes = {
+      'trigger': true,
+      'trigger--visible': this.visible,
+      'trigger--inline': this.inline,
+    };
+
     return html`
-      <span class="reference"></span>
-      <button @click=${this.scrollTop} class=${classMap({ icon: true,
-visible: this.visible })}>
+      ${this.inline ? html`` : html`<span class="reference"></span>`}
+      <button @click=${this.scrollTop} class=${classMap(classes)}>
+        <span class="message">Go to page top</span>
         ${this.svg}
       </button>
     `;
