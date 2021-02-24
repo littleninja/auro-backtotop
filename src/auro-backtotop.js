@@ -1,8 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 // Copyright (c) 2021 Alaska Airlines. All right reserved. Licensed under the Apache-2.0 license
 // See LICENSE in the project root for license information.
 
 // ---------------------------------------------------------------------
-/* eslint-disable no-magic-numbers, no-underscore-dangle */
 import { LitElement, html, css } from "lit-element";
 import { classMap } from 'lit-html/directives/class-map';
 import arrowUp from "@alaskaairux/icons/dist/icons/interface/arrow-up_es6";
@@ -11,7 +11,10 @@ import styleCss from "./style-css.js";
 
 const
   DEFAULT_MESSAGE = 'back to top',
-  DEFAULT_ROOT_MARGIN_TOP = '0px';
+  DEFAULT_ROOT_MARGIN_TOP = '0px',
+  HIDDEN_INTERSECTION_RATIO = 0.0,
+  VISIBLE_INTERSECTION_RATIO = 1.0,
+  WINDOW_SCROLL_TOP = 0;
 
 // See https://git.io/JJ6SJ for "How to document your components using JSDoc"
 /**
@@ -24,7 +27,6 @@ const
  *
  * @slot - Customize trigger content
  */
-
 class AuroBacktotop extends LitElement {
 
   static get properties() {
@@ -77,7 +79,7 @@ class AuroBacktotop extends LitElement {
   }
 
   scrollTop() {
-    window.scrollTo(window.scrollX, 0);
+    window.scrollTo(window.scrollX, WINDOW_SCROLL_TOP);
   }
 
   firstUpdated() {
@@ -86,13 +88,13 @@ class AuroBacktotop extends LitElement {
       return
     }
     const observer = new IntersectionObserver((entries) => {
-      this.visible = entries.some((entry) => entry.intersectionRatio < 1.0);
+      this.visible = entries.some((entry) => entry.intersectionRatio < VISIBLE_INTERSECTION_RATIO);
     }, {
       root: null,
       rootMargin: `${this.rootmargintop || DEFAULT_ROOT_MARGIN_TOP} 0px 0px 0px`,
       threshold: [
-        0.0,
-        1.0
+        HIDDEN_INTERSECTION_RATIO,
+        VISIBLE_INTERSECTION_RATIO
       ],
     });
 
@@ -110,9 +112,8 @@ class AuroBacktotop extends LitElement {
     return html`
       ${this.inline ? html`` : html`<span class="reference"></span>`}
       <button @click=${this.scrollTop} class=${classMap(classes)}>
-        <slot>
-          <span class="message">${DEFAULT_MESSAGE}</span>${this.svg}
-        </slot>
+        <div class="message"><slot>${DEFAULT_MESSAGE}</slot></div>
+        ${this.svg}
       </button>
     `;
   }
@@ -122,4 +123,3 @@ class AuroBacktotop extends LitElement {
 if (!customElements.get("auro-backtotop")) {
   customElements.define("auro-backtotop", AuroBacktotop);
 }
-/* eslint-enable no-magic-numbers, no-underscore-dangle */

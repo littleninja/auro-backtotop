@@ -1,6 +1,6 @@
 # Backtotop
 
-`<auro-backtotop>` is a [HTML custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) for the purpose of ...
+`<auro-backtotop>` is a [HTML custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) for the purpose of helping visitors quickly return to page top.
 
 ## UI development browser support
 
@@ -39,7 +39,7 @@ import "@alaskaairux/auro-backtotop";
 **Reference component in HTML**
 
 ```html
-<auro-backtotop>Hello World</auro-backtotop>
+<auro-backtotop></auro-backtotop>
 ```
 
 ## Install bundled assets from CDN
@@ -62,16 +62,40 @@ Since the legacy bundle includes many polyfills that are not needed by modern br
 
 The `<auro-backtotop>` element should be used in situations where users may:
 
-* ...
-* ...
-* ...
+* informational pages with many sections
+* pages with infinite scroll
 
 ## API Code Examples
 
-Default auro-backtotop
+Default (fixed positioning):
 
 ```html
-<auro-backtotop>Hello World</auro-backtotop>
+<auro-backtotop></auro-backtotop>
+```
+
+Adjust how soon or delayed the button shows either by where you include the element in your document or with the `rootmargintop` property:
+
+```html
+<!-- delay showing the button by 120px -->
+<auro-backtotop rootmargintop="120px"></auro-backtotop>
+```
+
+To display inline:
+
+```html
+<auro-backtotop inline></auro-backtotop>
+```
+
+For i18n support:
+
+```html
+<auro-backtotop arialabel="volver arriba">volver arriba</auro-backtotop>
+```
+
+You can customize what renders in the button:
+
+```html
+<auro-backtotop inline arialabel="zoom back to top">zoom zoom! 🚀</auro-backtotop>
 ```
 
 ## Development
