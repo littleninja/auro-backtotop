@@ -4,7 +4,7 @@ A component to help users quickly return to the top of a page.
 
 ## Fixed position trigger
 
-By default, the `auro-backtotop` element is positioned fixed to the bottom-right corner of the screen. The floating trigger button becomes visible when the user scrolls down the page. Consumers can tune visibility by placement of the `auro-backtotop` element in the document or by the `rootmargintop` property.
+By default, the `auro-backtotop` element is fixed to the bottom-right corner of the screen. The floating button becomes visible as the user scrolls down the page. Developers can tune when the button appears based on where the `auro-backtotop` element is placed in the document and with the `rootmargintop` property.
 
 <auro-accordion lowProfile justifyRight>
   <span slot="trigger">See code</span>
@@ -117,7 +117,7 @@ To render the trigger always-visible and inline, use the `inline` property.
 
 ## Custom trigger
 
-The trigger content--the arrow-up icon and text--can be customized to anything your heart desires, multilingual or otherwise.
+The trigger content--the arrow-up icon and text--can be customized to anything your heart desires, for i18n or just for fun.
 
 <auro-accordion lowProfile justifyRight>
   <span slot="trigger">See code</span>
@@ -127,7 +127,7 @@ The trigger content--the arrow-up icon and text--can be customized to anything y
   <h3>I'm a Little Teapot</h3>
   <p> ... </p>
   <p> ... </p>
-  <auro-backtotop inline>🫖</auro-backtotop>
+  <auro-backtotop inline>hop to top! 🫖</auro-backtotop>
 </article>
   ```
 
