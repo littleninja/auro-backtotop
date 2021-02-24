@@ -1,10 +1,10 @@
 # auro-backtotop
 
-A component to help users return to the top of a page.
+A component to help users quickly return to the top of a page.
 
-## auro-backtotop use cases
+## Fixed position trigger
 
-The `auro-backtotop` element can be used where page content runs long, especially on mobile. It can either present as a fixed element that appears as the top of the page scrolls out of view, or as an inline element inviting the user to scroll back to top at intervals.
+By default, the `auro-backtotop` element is positioned fixed to the bottom-right corner of the screen. The floating trigger button becomes visible when the user scrolls down the page. Consumers can tune visibility by placement of the `auro-backtotop` element in the document or by the `rootmargintop` property.
 
 <auro-accordion lowProfile justifyRight>
   <span slot="trigger">See code</span>
@@ -12,7 +12,7 @@ The `auro-backtotop` element can be used where page content runs long, especiall
   ```html
   <article>
     <auro-backtotop></auro-backtotop>
-    <h1>Beowulf</h1>
+    <h3>Beowulf</h3>
     <p> ... </p>
     <p> ... </p>
   </article>
@@ -22,7 +22,7 @@ The `auro-backtotop` element can be used where page content runs long, especiall
 
 <article>
   <auro-backtotop></auro-backtotop>
-  <h1>Beowulf</h1>
+  <h3>Beowulf</h3>
   <p>Hwæt. We Gardena in geardagum,</p>
   <p>þeodcyninga, þrym gefrunon,</p>
   <p>hu ða æþelingas ellen fremedon.</p>
@@ -50,20 +50,24 @@ The `auro-backtotop` element can be used where page content runs long, especiall
   <p>in mægþa gehwære man geþeon.</p>
 </article>
 
+## Inline trigger
+
+To render the trigger always-visible and inline, use the `inline` property.
+
 <auro-accordion lowProfile justifyRight>
   <span slot="trigger">See code</span>
 
   ```html
   <article>
-  <h1>The Canterbury Tales</h1>
+  <h3>The Canterbury Tales</h3>
   <section>
-    <h2>The Knight's Tale</h2>
+    <h4>The Knight's Tale</h4>
     <p> ... </p>
     <p> ... </p>
     <auro-backtotop inline></auro-backtotop>
   </section>
   <section>
-    <h2>The Miller's Tale</h2>
+    <h4>The Miller's Tale</h4>
     <p> ... </p>
     <p> ... </p>
     <auro-backtotop inline></auro-backtotop>
@@ -74,9 +78,9 @@ The `auro-backtotop` element can be used where page content runs long, especiall
 </auro-accordion>
 
 <article>
-  <h1>The Canterbury Tales</h1>
+  <h3>The Canterbury Tales</h3>
   <section>
-    <h2>The Knight's Tale</h2>
+    <h4>The Knight's Tale</h4>
     <p>"A knyght ther was and that a worthy man</p>
     <p>That fro the tyme that he first bigan</p>
     <p>To riden out, he loved chivalrie,</p>
@@ -109,4 +113,34 @@ The `auro-backtotop` element can be used where page content runs long, especiall
     <p>He was a verray, parfit gentil knyght."</p>
     <auro-backtotop inline></auro-backtotop>
   </section>
+</article>
+
+## Custom trigger
+
+The trigger content--the arrow-up icon and text--can be customized to anything your heart desires, multilingual or otherwise.
+
+<auro-accordion lowProfile justifyRight>
+  <span slot="trigger">See code</span>
+
+  ```html
+  <article>
+  <h3>I'm a Little Teapot</h3>
+  <p> ... </p>
+  <p> ... </p>
+  <auro-backtotop inline>🫖</auro-backtotop>
+</article>
+  ```
+
+</auro-accordion>
+
+<article>
+  <h3>I'm a Little Teapot</h3>
+  <p>I'm a little teapot,</p>
+  <p>Short and stout,</p>
+  <p>Here is my handle</p>
+  <p>Here is my spout</p>
+  <p>When I get all steamed up,</p>
+  <p>Hear me shout,</p>
+  <p>Tip me over and pour me out!</p>
+  <auro-backtotop inline>🫖</auro-backtotop>
 </article>
