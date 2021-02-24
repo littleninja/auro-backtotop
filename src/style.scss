@@ -5,40 +5,53 @@
 @import "./node_modules/@alaskaairux/design-tokens/dist/tokens/SCSSVariables";
 @import "./node_modules/@alaskaairux/design-tokens/dist/tokens/SassCustomProperties";
 
+$buttonDim: 40px;
+
 .reference {
   width: 0;
   height: 0;
 }
 
 .trigger {
-  height: 32px;
-  min-width: 32px;
   position: fixed;
-  bottom: -32px;
-  right: 32px;
+  bottom: -$buttonDim;
+  right: 24px;
+  min-width: $buttonDim;
+  height: $buttonDim;
   border: none;
-  border-radius: 16px;
-  white-space: nowrap;
+  border-radius: ($buttonDim / 2);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
   transition: bottom 300ms ease-in-out;
 
   &--inline {
     position: static;
     background-color: transparent;
+    color: var(--auro-color-text-link-on-light);
   }
 
   &--visible {
-    bottom: 32px;
+    bottom: 24px;
   }
   
-  &:not(.trigger--inline) .message {
-    display: inline-block;
-    max-width: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: max-width 300ms ease-in-out 50ms;
-  }
+  &:not(.trigger--inline) {
+    background-color: var(--auro-color-border-active-on-light);
+    color: var(--auro-color-text-primary-on-dark);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+      rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 
-  &:not(.trigger--inline):hover .message {
-    max-width: 32ch;
+    .message {
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: max-width 300ms ease-in-out 50ms;
+    }
+
+    &:hover .message {
+      max-width: 32ch;
+    }
   }
 }

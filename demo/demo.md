@@ -142,5 +142,5 @@ The trigger content--the arrow-up icon and text--can be customized to anything y
   <p>When I get all steamed up,</p>
   <p>Hear me shout,</p>
   <p>Tip me over and pour me out!</p>
-  <auro-backtotop inline>🫖</auro-backtotop>
+  <auro-backtotop inline>hop to top! 🫖</auro-backtotop>
 </article>
