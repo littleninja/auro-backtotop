@@ -23,12 +23,12 @@ $buttonDim: 40px;
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  color: var(--auro-color-text-link-on-light);
   transition: bottom 300ms ease-in-out;
 
   &--inline {
     position: static;
     background-color: transparent;
-    color: var(--auro-color-text-link-on-light);
   }
 
   &--visible {
@@ -36,12 +36,13 @@ $buttonDim: 40px;
   }
   
   &:not(.trigger--inline) {
-    background-color: var(--auro-color-border-active-on-light);
-    color: var(--auro-color-text-primary-on-dark);
+    background-color: var(--auro-color-brand-neutral-100);
+    border: 1px solid;
+    border-color: var(--auro-color-brand-neutral-300);
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-      rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-      rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 6px 12px -1px,
+    rgba(0, 0, 0, 0.05) 0px 8px 4px -1px;
 
     .message {
       max-width: 0;
